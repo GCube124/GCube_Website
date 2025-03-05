@@ -18,7 +18,7 @@ const Contact = () => {
     console.log("📤 Payload:", { name, email, message }); // Log request payload
   
     try {
-      const response = await axios.post('https://localhost:4000/api/v1/query/register/', {
+      const response = await axios.post('https://gcube-club-site.onrender.com/api/v1/query/register/', {
         name,
         email,
         message,

@@ -140,18 +140,21 @@ const Register = () => {
   const handleUserRegistration = async (formData) => {
     console.log("Attempting User Registration with Data:", formData);
     try {
-      const response = await axios.post("https://gcube-club-site.onrender.com/api/v1/user/register", formData, {
-        headers: { 'Content-Type': 'application/json' }
-      });
-  
-      console.log("User Registration Response:", response.data);
-      setUserId(response.data.data._id);
-      return response.data;
+        const form = new FormData();
+        Object.entries(formData).forEach(([key, value]) => {
+            form.append(key, value);
+        });
+
+        const response = await axios.post("https://gcube-club-site.onrender.com/api/v1/user/register", form);
+
+        console.log("User Registration Response:", response.data);
+        setUserId(response.data.data._id);
+        return response.data;
     } catch (error) {
-      console.error("Registration error:", error.response?.data || error.message);
-      throw error;
+        console.error("Registration error:", error.response?.data || error.message);
+        throw error;
     }
-  };
+};
   
   
 
