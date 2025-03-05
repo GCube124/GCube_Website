@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import NavigationBar from '../components/navbar';
 import backgroundImage from '../assets/3_back.jpeg';
+import axios from 'axios';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -13,25 +14,28 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const response = await fetch('https://gcube-club-site.onrender.com/api/v1/query/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
-
-    if (response.ok) {
-      // Reset form fields
+    console.log("🔵 Form submitted, sending request..."); // Log before request
+    console.log("📤 Payload:", { name, email, message }); // Log request payload
+  
+    try {
+      await axios.post('https://gcube-club-site.onrender.com/api/v1/query/register/', {
+        name,
+        email,
+        message,
+      });
+      console.log("✅ Response received:", response.data);
+      // ✅ Reset form fields on success
       setName('');
       setEmail('');
       setMessage('');
       setShowConfirmation(true);
       setTimeout(() => setShowConfirmation(false), 3000);
-    } else {
-      // alert('Failed to send message.');
+    } catch (error) {
+      console.error('Failed to send message:', error);
     }
+  
     setIsSubmitting(false);
+    console.log("🟢 Form submission state reset.");
   };
 
   return (
