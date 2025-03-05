@@ -18,7 +18,7 @@ const Contact = () => {
     console.log("📤 Payload:", { name, email, message }); // Log request payload
   
     try {
-      await axios.post('https://gcube-club-site.onrender.com/api/v1/query/register/', {
+      const response = await axios.post('https://localhost:4000/api/v1/query/register/', {
         name,
         email,
         message,
@@ -36,7 +36,7 @@ const Contact = () => {
   
     setIsSubmitting(false);
     console.log("🟢 Form submission state reset.");
-  };
+};
 
   return (
     <div style={{ minHeight: '100vh', backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
