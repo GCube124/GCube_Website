@@ -7,6 +7,7 @@ import Footer from './components/footer';
 import Games from './pages/games';
 import Contact from './pages/contact';
 import Register from './pages/Register';
+import Closed from './pages/Closed';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/games" element={<Games />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
+          {/* <Route path="/closed" element={<Closed />} /> */}
         </Routes>
         <Footer />
       </Router>
