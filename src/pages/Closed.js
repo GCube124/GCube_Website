@@ -23,7 +23,7 @@ const Closed = () => {
                   textAlign: 'center', 
                   marginBottom: '5vh',
               }}>Registrations Closed</h1>
-              <p className="lead text-white">Thank you for your interest. Registrations have ended.</p>
+              <p className="lead text-white">Thank you for your interest. Registrations are closed for now.</p>
             </Col>
           </Row>
         </Container>
